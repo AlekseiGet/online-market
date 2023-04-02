@@ -3,8 +3,8 @@
  *  npm install -D nodemon
  *  npm i jsonwebtoken
  *  npm i bcrypt
- *  npm i uuid
- *  npm i express-fileupload
+ *  npm i uuid  генерирует случайные ID которые не повторяются
+ *  npm i express-fileupload  для работы с файлами
  * 
  * для клиент
  *  npm i axios

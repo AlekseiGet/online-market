@@ -16,7 +16,7 @@ class DviceController {
           let {name, price, brandId, typeId, info} = req.body;
           const {img} = req.files
           let fileName = uuid.v4() + ".jpg"  // функция сгенерирует уникальный id и добавить .jpg
-          img.mv(path.resolve(__dirname, '..', 'static', fileName))//для перемещения файла в заданную папку
+          img.mv(path.resolve(__dirname, '..', 'static', fileName))//для перемещения файла в заданную папку 
           const device = await Device.create({ name, price, brandId, typeId,  img: fileName })
 
           if (info) {

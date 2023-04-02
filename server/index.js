@@ -1,11 +1,11 @@
 require('dotenv').config()//для того чтобы сервер мог считывать это файл
 const express = require('express')
-const sequelize = require('c:/Users/batma/Desktop/React/online-store/server/db')
+const sequelize = require('d:/DISC D/IT/online-market/server/db')
 const fileUpLoad = require('express-fileupload') // установить нужно npm i express-fileupload
 const models = require('c:/Users/batma/Desktop/React/online-store/server/models/models') //подключаю всю базу при запущенном PG Admin4
 const cors = require('cors')// настраиваю cors чтобы отправлять запросы
-const router = require('c:/Users/batma/Desktop/React/online-store/server/routes/index')  //подключил роутер
-const errorHandLer = require('c:/Users/batma/Desktop/React/online-store/server/middleware/ErrorHandlingMiddleware')
+const router = require('d:/DISC D/IT/online-market//server/routes/index')  //подключил роутер
+const errorHandLer = require('d:/DISC D/IT/online-market//server/middleware/ErrorHandlingMiddleware')
 const path = require('path')
 
 const PORT = process.env.PORT || 5000  // забираю PORT из переменных окружения

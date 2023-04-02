@@ -55,6 +55,7 @@ const Shop = observer ( () => {
                 }
                 
                 <ul>
+                    <li>нужно из папки "server" запустить npm run dev</li>
                     <li>при перезагрузке теряются права</li>        
                     <li>Сделать поиск</li>
                 </ul>
