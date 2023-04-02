@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/online-market/static/css/main.dcaed54a.css",
-    "main.js": "/online-market/static/js/main.07e98755.js",
+    "main.js": "/online-market/static/js/main.c06d3121.js",
     "static/media/404.jpg": "/online-market/static/media/404.b2b47c1ec8cb7592b0b5.jpg",
     "index.html": "/online-market/index.html",
     "main.dcaed54a.css.map": "/online-market/static/css/main.dcaed54a.css.map",
-    "main.07e98755.js.map": "/online-market/static/js/main.07e98755.js.map"
+    "main.c06d3121.js.map": "/online-market/static/js/main.c06d3121.js.map"
   },
   "entrypoints": [
     "static/css/main.dcaed54a.css",
-    "static/js/main.07e98755.js"
+    "static/js/main.c06d3121.js"
   ]
 }
