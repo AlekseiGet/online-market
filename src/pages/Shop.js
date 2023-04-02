@@ -38,22 +38,20 @@ const Shop = observer ( () => {
     return (
         <Container>
             <Row className='mt-2'>
-                <Col md={3}>
+                  <Col md={3}>
                         <TypeBar/>
                   </Col> 
                   <Col>
                         <BrandVBar/>
                   </Col>
                 {device.devices.length ?                       
-                                      <Col md={9}>
-                                         
-                                         <DeviceList/>
-                                         <Pages/>
-                                      </Col> 
+                                 <Col md={9}>                                       
+                                    <DeviceList/>
+                                    <Pages/>
+                                 </Col> 
                                  :
                                  <Row><h1>" Устройства не найдены"</h1> </Row>                                                              
-                }
-                
+                }              
                 <ul>
                     <li>нужно из папки "server" запустить npm run dev</li>
                     <li>при перезагрузке теряются права</li>        
