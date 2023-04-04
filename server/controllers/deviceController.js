@@ -67,20 +67,35 @@ class DviceController {
 
     //фунуция получения одного конкретного девайса по id устройства 53.00
     async getOne(req, res, next) {
-        try {
-            const {id} = req.params //получаю id устройства из параметров в deviceRouter (router.get('/:id', deviceController.getOne))
-        const device = await Device.findOne(
-            {
+       
+         try {
+            const {id} = req.params 
+            if (isNaN(id)) {           //если  в запросе строка
+              
+                 const name = id  // Для поиска по графе name
+                const device = await Device.findAndCountAll(
+                     {
+                         where: { name },
+                         include: [{ model: DeviceInfo, as: 'info' }]
+                     },
+                 )
+                return res.json(device)
+             
+            } else {               //если число в запрсе
+                 const device = await Device.findOne(
+              {
                 where: { id },
                 include: [{ model: DeviceInfo, as: 'info' }]
-            },
-        )
-        return res.json(device)
-        } catch (error) {
+               },
+                )
+                return res.json(device)
+            }
+           
+        } catch (e) {
             return next(ApiError.badRequest(e.messsage)) 
-        }
-        
+        }     
     }
+
     //функция удаления
     async delete(req, res, next) {
         const id = req.params.id//получаю из запроса id

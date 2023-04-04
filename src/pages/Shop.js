@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Col from 'react-bootstrap/esm/Col';
 import Container from 'react-bootstrap/esm/Container';
 import Row from 'react-bootstrap/esm/Row';
@@ -9,6 +9,7 @@ import { observer } from 'mobx-react-lite';
 import { Context } from '..';
 import { fetchTypes, fetchBrand, fetchDevice } from '../http/deviceApi';
 import Pages from '../components/Pages';
+import SearchBar from '../components/SearchBar';
 
 
 const Shop = observer ( () => {
@@ -32,16 +33,19 @@ const Shop = observer ( () => {
     }, [device.page, device.selectedType, device.selectedBrand, device.limit])//будет вызываться каждый раз когда изменим страницу, бренд , тип
 
 
-    
+
  
 
     return (
         <Container>
             <Row className='mt-2'>
+                 <Col>
+                       <SearchBar/>           
+                  </Col>
                   <Col md={3}>
                         <TypeBar/>
                   </Col> 
-                  <Col>
+                  <Col >
                         <BrandVBar/>
                   </Col>
                 {device.devices.length ?                       
@@ -55,7 +59,7 @@ const Shop = observer ( () => {
                 <ul>
                     <li>нужно из папки "server" запустить npm run dev</li>
                     <li>при перезагрузке теряются права</li>        
-                    <li>Сделать поиск</li>
+                    <li>Сделать сортировку</li>
                 </ul>
                 
               

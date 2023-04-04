@@ -55,24 +55,21 @@ export const creatRatingDevice = async (device) => { // Создание фай�
     return data
 }
 
-export const fetchRatingDevice = async (id) => { // Получение всех объектов с данными рейтинга по id devace
-    const { data } = await $host.get('api/rating/' + id)
-    return data
-}
-
-
-export const fetchBasket = async (id) => { // Получаю ID всех device выбраных пользователем
-  const { data } = await $host.get('api/basket/' + id)
-    return data 
-}
-
-
 export const deleteOneDeviceInBasket = async (id) => {  //Удалить один девайс из корзины
     const { data } = await $authHost.delete('api/basket/' + id)
     return data
 }
 
 
+export const fetchRatingDevice = async (id) => { // Получение всех объектов с данными рейтинга по id devace
+    const { data } = await $host.get('api/rating/' + id)
+    return data
+}
+
+export const fetchBasket = async (id) => { // Получаю ID всех device выбраных пользователем
+  const { data } = await $host.get('api/basket/' + id)
+    return data 
+}
 
 export const fetchTypes = async () => {
     const { data } = await $host.get('api/type')
@@ -97,3 +94,4 @@ export const fetchOneDevice = async (id) => {
     const { data } = await $host.get('api/device/' + id)
     return data
 }
+

@@ -9,7 +9,6 @@ const TypeBar = observer(() => {
 
     return (
         <ListGroup>
-            <button onClick={() => {device.setSelectedType(false); device.setSelectedBrand(false)}}>показать все</button>
             {device.types.map( type => 
                 <ListGroup.Item
                    style={{cursor: "pointer" }} 
