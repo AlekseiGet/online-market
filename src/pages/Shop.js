@@ -18,7 +18,7 @@ const Shop = observer ( () => {
     useEffect(()=> {
         fetchTypes().then(data => device.setTypes(data))
         fetchBrand().then(data => device.setBrand(data))
-        fetchDevice(null,  null, 1, 5).then(data => {   //typeId, brandId, текущая страница, ограниченое по количеству  ЗДЕСЬ
+        fetchDevice(null,  null, 1, 5, null).then(data => {   //typeId, brandId, текущая страница, ограниченое по количеству  ЗДЕСЬ
              device.setDevice(data.rows)
              device.setTotalCount(data.count)//узнать сколько товара получили после запроса
             })
@@ -26,15 +26,12 @@ const Shop = observer ( () => {
   
 
     useEffect(()=>{//срабатывает при изменении фильтрации выбора
-        fetchDevice(device.selectedType.id, device.selectedBrand.id, device.page, device.limit).then(data => {   //выбраный тип из DeviceStore, выбраный бренд, текущая страница полученая из STORE, limit ЗДЕСЬ
+        fetchDevice(device.selectedType.id, device.selectedBrand.id, device.page, device.limit, device.sort[1]).then(data => {   //выбраный тип из DeviceStore, выбраный бренд, текущая страница полученая из STORE, limit ЗДЕСЬ
             device.setDevice(data.rows)
             device.setTotalCount(data.count)//узнать сколько товара получили после запрос
         })
-    }, [device.page, device.selectedType, device.selectedBrand, device.limit])//будет вызываться каждый раз когда изменим страницу, бренд , тип
+    }, [device.page, device.selectedType, device.selectedBrand, device.limit, device.sort])//будет вызываться каждый раз когда изменим страницу, бренд , тип
 
-
-
- 
 
     return (
         <Container>

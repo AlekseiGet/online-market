@@ -4,6 +4,7 @@ export default class DeviceStore {
     constructor() {//он будет вызываться при создании объекта данного класса
         this._types =[]
         this._brands = []
+        this._sort = []
         this._devices = []
         this._rating = [0]  //для изменения оценки
         this._selectedType ={}//для кликабельности
@@ -21,6 +22,9 @@ export default class DeviceStore {
     } 
     setBrand(brands) {
         this._brands = brands
+    }
+    setSort(sort) {
+        this._sort = sort
     }
     setDevice(devices) {
         this._devices = devices
@@ -57,6 +61,9 @@ export default class DeviceStore {
     }
     get brands() {
         return this._brands
+    }
+    get sort() {
+        return this._sort
     }
     get devices() {
         return this._devices

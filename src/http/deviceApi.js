@@ -81,10 +81,10 @@ export const fetchBrand = async () => {
     return data
 }
 
-export const fetchDevice = async (typeId, brandId, page, limit = 5) => {//передал сюда typeId, brandId, page, limit по умолчанию равен 5
+export const fetchDevice = async (typeId, brandId, page, limit = 5, sort) => {//передал сюда typeId, brandId, page, limit по умолчанию равен 5
     const { data } = await $host.get('api/device', {
         params: {//в опциях можно эти параметры указать удобным для меня видом
-            typeId, brandId, page, limit //они автоматически подставятся в строку запроса если переменная не пустая
+            typeId, brandId, page, limit, sort //они автоматически подставятся в строку запроса если переменная не пустая
         }
     })
     return data

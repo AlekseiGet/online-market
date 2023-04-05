@@ -33,11 +33,11 @@ const SearchBar = observer(() => {
             <input type='text' name='name' value={search} onChange={e => setSearch(e.target.value)} placeholder='Что будем искать?' />
             <button onClick={searchOne}>Найти</button>  
             <Dropdown>
-                <Dropdown.Toggle>Сортировать</Dropdown.Toggle>
+                <Dropdown.Toggle>{device.sort[0] || "Сортровать по"}</Dropdown.Toggle>
                 <Dropdown.Menu>
-                    <Dropdown.Item>По рейтингу</Dropdown.Item>
-                    <Dropdown.Item>Цена от меньшей</Dropdown.Item>
-                    <Dropdown.Item>Цена от большей</Dropdown.Item>
+                    <Dropdown.Item onClick={() => device.setSort(['По рейтингу', 1])}>По рейтингу</Dropdown.Item>
+                    <Dropdown.Item onClick={() => device.setSort(["Цена от меньшей", 2])}>Цена от меньшей</Dropdown.Item>
+                    <Dropdown.Item onClick={() => device.setSort(['Цена от большей', 3])}>Цена от большей</Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>
          </Col>

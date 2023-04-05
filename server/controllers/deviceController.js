@@ -40,24 +40,42 @@ class DviceController {
     //получение по запросу 
     async getAll(req, res, next) {
         try {
-            let {brandId, typeId, limit, page} = req.query
-        page = page || 1 // по умолчанию одна странца
-        limit = limit || 9  //по умолчанию не больше 9
-        let offset = page * limit - limit// отступ
+            let {brandId, typeId, limit, page, sort} = req.query
+            page = page || 1 // по умолчанию одна странца
+            limit = limit || 9  //по умолчанию не больше 9
+            let offset = page * limit - limit// отступ
+            let devices;
 
-        let devices;
-        if (!brandId && !typeId) {
-            devices = await Device.findAndCountAll({limit, offset})
-        }
-        if (brandId && !typeId ) {
-            devices = await Device.findAndCountAll({where:{brandId}, limit, offset})
-        }
-        if (!brandId && typeId) {
-            devices = await Device.findAndCountAll({ where: { typeId}, limit, offset })
-        }
-        if (brandId && typeId) {
-            devices = await Device.findAndCountAll({ where: {typeId ,  brandId}, limit, offset })
-        }
+            if (sort==1) {
+                //Если есть запрос на сортровку
+                devices = await Device.findAndCountAll({ limit, offset })
+            }
+
+            if (sort == 2) {
+                //Если есть запрос на сортровку
+                devices = await Device.findAndCountAll({ limit, offset })
+            }
+
+            if (sort == 3) {
+                //Если есть запрос на сортровку
+                devices = await Device.findAndCountAll({ limit, offset })
+            }
+            if (!sort) {
+                //Если нет запроса на сортровку
+               if (!brandId && !typeId) {
+                devices = await Device.findAndCountAll({limit, offset})
+               }
+               if (brandId && !typeId ) {
+                   devices = await Device.findAndCountAll({where:{brandId}, limit, offset})
+               }
+               if (!brandId && typeId) {
+                   devices = await Device.findAndCountAll({ where: { typeId}, limit, offset })
+               }
+               if (brandId && typeId) {
+                   devices = await Device.findAndCountAll({ where: {typeId ,  brandId}, limit, offset })
+               }
+            }
+            
         return res.json(devices)
         } catch (e) {
            return next(ApiError.badRequest(e.messsage)) 
