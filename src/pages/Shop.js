@@ -38,25 +38,30 @@ const Shop = observer ( () => {
             <Row className='mt-2'>
                  <Col>
                        <SearchBar/>           
-                  </Col>
-                  <Col md={3}>
+                 </Col>
+
+                {device.devices ? 
+                     <Row>
+        
+                        <Col md={3}>
                         <TypeBar/>
-                  </Col> 
-                  <Col >
+                        </Col> 
+
+                        <Col >
                         <BrandVBar/>
-                  </Col>
-                {device.devices.length ?                       
-                                 <Col md={9}>                                       
-                                    <DeviceList/>
-                                    <Pages/>
-                                 </Col> 
+                        </Col> 
+
+                        <Col md={9}>                                       
+                     <DeviceList/>
+                     <Pages/>
+                        </Col> 
+                    </Row>
                                  :
-                                 <Row><h1>" Устройства не найдены"</h1> </Row>                                                              
+                      <Row><h1>" Устройства не найдены"</h1> </Row>                                                              
                 }              
                 <ul>
                     <li>нужно из папки "server" запустить npm run dev</li>
                     <li>при перезагрузке теряются права</li>        
-                    <li>Сделать сортировку</li>
                 </ul>
                 
               

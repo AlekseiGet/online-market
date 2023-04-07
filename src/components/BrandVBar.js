@@ -8,7 +8,8 @@ const BrandVBar = observer(() => {
     const { device } = useContext(Context)
     return (
         <Form className='d-flex'>
-            {device.brands.map(brand =>
+            {
+            device.brands.map(brand =>
                 <Card
                   style={{cursor: "pointer"}}
                   border={brand.id === device.selectedBrand.id ? "danger" : "light" } 
