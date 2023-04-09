@@ -4,6 +4,6 @@ const basketController = require('../controllers/basketController')
 
 router.post('/', basketController.addDev)
 router.get('/:id', basketController.getAll)
-router.delete('/:id', basketController.delOne)
+router.delete('/', basketController.delOne)
 
 module.exports = router

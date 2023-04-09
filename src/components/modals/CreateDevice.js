@@ -55,6 +55,7 @@ const CreateDevice = observer(({ show, onHide }) => {
         formData.append('img', file)//как img передаю файл
          formData.append('brandId', device.selectedBrand.id)//забираю только id а не целиком объект
          formData.append('typeId', device.selectedType.id)
+      
          //массив нельзя передать .. либо строка либо блопп 
          formData.append('info', JSON.stringify(info))// массив перегоняю в строку, а на сервере будет парсипься обратно в массив
 

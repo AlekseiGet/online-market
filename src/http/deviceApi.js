@@ -55,8 +55,8 @@ export const creatRatingDevice = async (device) => { // Создание фай�
     return data
 }
 
-export const deleteOneDeviceInBasket = async (id) => {  //Удалить один девайс из корзины
-    const { data } = await $authHost.delete('api/basket/' + id)
+export const deleteOneDeviceInBasket = async (basketId, deviceId) => {  //Удалить один девайс из корзины  
+    const { data } = await $authHost.delete('api/basket',{ params: { basketId, deviceId }})
     return data
 }
 
@@ -67,7 +67,7 @@ export const fetchRatingDevice = async (id) => { // Получение всех 
 }
 
 export const fetchBasket = async (id) => { // Получаю ID всех device выбраных пользователем
-  const { data } = await $host.get('api/basket/' + id)
+    const { data } = await $authHost.get('api/basket/' + id)
     return data 
 }
 

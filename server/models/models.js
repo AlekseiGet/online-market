@@ -70,7 +70,7 @@ Brand.hasMany(Device)
 Device.belongsTo(Brand)
 
 Device.hasMany(Rating)
-Rating.belongsTo(Device)//сдесь изменил
+Rating.belongsTo(Device)//здесь изменил
 
 Device.hasMany(BasketDevice)
 BasketDevice.belongsTo(Device)

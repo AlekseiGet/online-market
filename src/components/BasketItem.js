@@ -1,32 +1,33 @@
 import { useContext} from 'react';
-import { Col, Row } from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
 import Button from 'react-bootstrap/esm/Button';
 import DeviseItem from './DeviseItem';
-import { deleteOneDeviceInBasket } from '../http/deviceApi';
+import { deleteOneDeviceInBasket } from '../http/deviceApi'; 
+import { Context } from '../index';
+import { observer } from 'mobx-react-lite';
+import { fetchBasket } from '../http/deviceApi';
 
+const BasketItem = observer( ( ice ) => {
+ 
+   const { device, user } = useContext(Context)
 
-
-const BasketItem = ({ device, delEllement }) => {
-
-
-   const remove = () => {
-     if (window.confirm("Передумал покупать ?")) { 
-         alert('Сейчас удалю')
-         deleteOneDeviceInBasket(device.info[0].deviceId) // передал deviceId в функцию для отправки на сервер
-
-         delEllement(device.info[0].deviceId) //передал в родителя для манипуляций с массивом
+  const remove = async () => {
+ 
+   if (window.confirm("Передумал покупать ?")) { 
+        await deleteOneDeviceInBasket(user.user.id, ice.ice.id ) //Удалить предмет
+         fetchBasket(user.user.id).then(data => device.setDevice(data)) //Получить заново корзину
         }
       else{
         alert(" Это хорошо")     
-      }
+      }  
     } 
-      
+
     return (
-        <Col key={device.createdAt}>
-            <DeviseItem device={device} />
+        <Col>
+          <DeviseItem device={ice.ice} />
             <Button variant={"outline-dark"} className="mt-4 p-2" onClick={remove} >Удалить из корзины</Button>
         </Col> 
     );
-};
-
+});
+//Сейчас
 export default BasketItem;
