@@ -4,9 +4,10 @@
  export default class UserStore {
     constructor() {//он будет вызываться при создании объекта данного класса
        this._isAuth = false //ДОЛЖНО БЫТЬ FALSE  _  нижнее подчёркивани чтобы обозначить что переменная изменятся не может
-       this._user = {}
-       this._allUsers = {}
-       this._selectedUser ={}
+       this._isLoading = true //Загрузчик
+       this._user = {}  //Пользователь
+       this._allUsers = {} //Все пользователи
+       this._selectedUser ={} //Выбраный пользователь для удаления
        this._isAdmin = false  //Хочу что бы проверял админ или нет
        makeAutoObservable(this)//mobx будет следить за изменениями компонента и при изменении компоненты будут перерендиваться ,будет показывать авторизован пользователь или нет
     }
@@ -19,6 +20,10 @@
          this._user = user
      }
 
+     setIsLoading(isLoading) { //Показывать загрузчик пока идёт ответ от сервера
+         this._isLoading = isLoading
+     }
+
     setAllUsers(allUsers) {
        this._allUsers = allUsers
     }
@@ -27,7 +32,7 @@
        this._isAdmin = bool
     }
 
-    setSelectedUser(selectedUser) { //Для проверки админ или нет
+    setSelectedUser(selectedUser) { //Для выбора пользователя
        this._selectedUser = selectedUser
     }
 /**  геттеры  для получения переменных из нашего состояния
@@ -39,12 +44,15 @@
      get user() {
         return this._user
      }
+     get isloading() {
+        return this._isloading
+     }
      get isAdmin() {
        return this._isAdmin
-    }
+     }
      get allUsers() {
         return this._allUsers
-    }
+     }
 
     get selectedUser() {
        return this._selectedUser

@@ -29,9 +29,19 @@ const Auth = observer(() => {
              }
                  user.setUser(data)//сохратяю данные о пользователе data или user?
                  user.setIsAuth(true)
-                 if (user.user.role === "ADMIN") {
-                     user.setIsAdmin(true)
-                 }
+
+                 localStorage.setItem('auth', "true")//добавил в localStorage 'auth'
+                 localStorage.setItem('email', user.user.email)
+                 localStorage.setItem('exp', user.user.exp)
+                 localStorage.setItem('iat', user.user.iat)
+                 localStorage.setItem('id', user.user.id)
+                 localStorage.setItem('role', user.user.role)
+          //  console.log(user.user);
+              
+             if (user.user.role === "ADMIN") {
+                 user.setIsAdmin(true)
+                 localStorage.setItem('admin', "true") //добавил в localStorage 'admin'
+             }
                  history(SHOP_ROUTE)
         } catch (e) {
             alert(`${e.message} сделай перебор ошибок`)

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Context } from '../index';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -20,9 +20,18 @@ const NavBar =  observer(() => {
         user.setUser({})
         user.setIsAuth(false)
         user.setIsAdmin(false)
+        localStorage.removeItem('auth')  //удалил в localStorage 'auth'
+        localStorage.removeItem('admin') //удалил в localStorage 'admin'
+        localStorage.removeItem('email')
+        localStorage.removeItem('exp')
+        localStorage.removeItem('iat')
+        localStorage.removeItem('id')
+        localStorage.removeItem('role')
+         
+       
         history(SHOP_ROUTE)
     }
- 
+
 
     return (
        <Navbar bg="dark" variant="dark">

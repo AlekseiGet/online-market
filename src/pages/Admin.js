@@ -7,10 +7,11 @@ import CreateDevice from '../components/modals/CreateDevice';
 import CreateType from '../components/modals/CreateType';
 import Delete from '../components/modals/Delete'; 
 import { Context } from '..';
-import { useNavigate } from 'react-router-dom';
+import { Spinner } from 'react-bootstrap'
 import { Row } from 'react-bootstrap';
+import { observer } from 'mobx-react-lite';
 
-const Admin = () => {
+const Admin = observer(() => {
     const { user } = useContext(Context)
     const [brandViseble, setBrandViseble ] = useState(false)
     const [typeViseble, setTypeViseble] = useState(false)
@@ -40,7 +41,7 @@ const Admin = () => {
         </Container >
     ) 
     
-};
+});
 
 export default Admin;
 //"Страница администратора"

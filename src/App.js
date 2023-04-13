@@ -9,25 +9,40 @@ import { Spinner }from 'react-bootstrap'
 
 const App = observer(() => {
   const {user} = useContext(Context)
-  const [loading, setLoading] = useState(true)//идёт загрузка или нет
 
   useEffect(() => {
      check().then(data => {  // Тут что то не так
       // user.setUser(true)//не понял зачем изменил на true
      //user.setIsAuth(true)
-     } ).finally(() => setLoading(false))
-  },[])//массив пустой  -- отработает один раз - при запуске
-
-
-
-  if (loading) {
+     }).finally(() => user.setIsLoading(false))
+  },[])
+  
+   useEffect(() => {   //При перезагрузке достаю из localStorage
+    if (localStorage.auth) {//Если auth сохранилось в localStorage  
+      user.setIsAuth(true) 
+      user.setUser({
+        email: localStorage.email,
+        exp: localStorage.exp,
+        iat: localStorage.iat,
+        id: localStorage.id,
+        role: localStorage.role
+      
+      } )   
+    }
+    if (localStorage.admin) {//Если admin сохранилось в localStorage  
+      user.setIsAdmin(true)    
+    }
+    
+  }, [])
+   
+  if (user.isloading) {
     return <Spinner animation={'grow'}/>
   }
 
   return (
     <BrowserRouter>
       <NavBar/>
-      <AppRouter/>
+      <AppRouter  />
     </BrowserRouter>
   );
 });

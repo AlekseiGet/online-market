@@ -60,8 +60,8 @@ const ChangeAdmin = observer(({ show, onHide }) => {
                     <Dropdown className='mt-2 mb-2'>
                         <Dropdown.Toggle  >{user.selectedUser.name || 'Забрать право администратора' }  </Dropdown.Toggle>
                         <Dropdown.Menu>                
-                            {tru
-                               ?user.allUsers.map(onUser =>
+                            {tru?
+                               user.allUsers.map(onUser =>
                                    <Dropdown.Item onClick={() => user.setSelectedUser({ name: onUser.email, role: onUser.role, id: onUser.id })} key={onUser.id}>имя: {onUser.email},  права: {onUser.role}</Dropdown.Item>
                                 )
                                : <MyLoader/>

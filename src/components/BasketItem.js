@@ -7,9 +7,8 @@ import { Context } from '../index';
 import { observer } from 'mobx-react-lite';
 import { fetchBasket } from '../http/deviceApi';
 
-const BasketItem = observer( ( ice ) => {
- 
-   const { device, user } = useContext(Context)
+const BasketItem = observer( ( ice ) => { 
+  const { device, user } = useContext(Context)
 
   const remove = async () => {
  

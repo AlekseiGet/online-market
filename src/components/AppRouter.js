@@ -1,11 +1,16 @@
 import React, { useContext } from 'react';
 import {Routes, Route, Navigate} from 'react-router-dom'
 import { Context } from '..';
+import { Spinner } from 'react-bootstrap'
 import { authRoutes, publicRoutes, adminRoutes } from '../routes';
 import {SHOP_ROUTE } from "../utils/consts"
  
 const AppRouter = () => {
    const {user} = useContext(Context)
+
+   if (user.isloading) {
+      return <Spinner animation={'grow'} />
+   }
   
     return (
        <Routes>
